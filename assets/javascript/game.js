@@ -1,34 +1,76 @@
 var game = {
-  attempts: 5,
+  attempts: 10,
 
-  words: [
-    'Apple',
-    'Banana',
-    'Cranberry',
-    'Grape',
-    'Cherry',
-    'Orange',
-    'Mango'
+  videos: [
+    lakai= {name:'FULLYFLARED', logo:'assets/images/lakai.png'},
+    adidas= {name:'AWAYDAYS', logo:'assets/images/adidas.png'},
+    vans= {name:'PROPELLOR', logo:'assets/images/vans.png'},
+    magenta= {name:'BALADE', logo:'assets/images/magenta.jpeg'},
+    bronze= {name:'ITSTIME', logo:'assets/images/bronze.png'},
+    baker= {name:'BAKEANDDESTROY', logo:'assets/images/baker.png'},
+    deathwish= {name:'THEDEATHWISHVIDEO', logo:'assets/images/deathwish.jpg'},
+    enjoi= {name:'BAGOFSUCK', logo:'assets/images/enjoi.png'},
+    palace= {name:'PALASONIC', logo:'assets/images/palace.png'},
+    pyramid_country= {name:'EXETER', logo:'assets/images/pyramid-country.png'},
+    real= {name:'SINCEDAYONE', logo:'assets/images/real.png'},
+    fallen= {name:'RIDETHESKY', logo:'assets/images/fallen.png'},
+    worble= {name:'TOXICPLANET', logo:'assets/images/worble.jpeg'},
+    transworld= {name:'ANDNOW', logo:'assets/images/transworld.jpeg'},
+    welcome= {name:'FETISH', logo:'assets/images/welcome.png'},
+    wknd= {name:'SIRPALMER', logo:'assets/images/wknd.jpg'},
+    dime= {name:'DIMETURDSEASON', logo:'assets/images/dime.jpeg'},
+    emerica= {name:'STAYGOLD', logo:'assets/images/emerica.png'},
+    real= {name:'SINCEDAYONE', logo:'assets/images/real.png'},
+    zero= {name:'COLDWAR', logo:'assets/images/zero.png'}
   ],
 
   guessList: [],
   wins: 0,
-  gamePlayed: 0,
+  gamesPlayed: 0,
 
-  getWord: function(){
-   return this.words[Math.floor(Math.random() * this.words.length)];
+  getVideo: function(){
+   return this.videos[Math.floor(Math.random() * this.videos.length)];
   },
+
+
 
   // Resets attempts and guessList for new game
   reset: function(){
-    this.attempts = 5;
+    this.attempts = 10;
     this.guessList = [];
   }
 };
 
-var word = 'testword';
-word = word.toUpperCase();
+var word = game.getVideo();
 
+var getBlanks = function() {
+  clearBlanks();
+  for(i=0; i<word.name.length; i++){
+    var newSpan = document.createElement('span');
+    newSpan.textContent = '_';
+    newSpan.classList.add("place-holder", "display-3");
+    blanks.appendChild(newSpan);
+  }
+}
+
+var clearBlanks = function() {
+  const blanks = document.getElementById('blanks');
+  while(blanks.firstChild){
+    blanks.removeChild(blanks.firstChild);
+  }
+}
+
+var guessedCorrect = function(){
+  var blanks = document.getElementsByClassName('place-holder');
+  for(i=0; i<word.name.length; i++){
+    console.log(i);
+    if(word.name[i] != blanks[i].textContent)// if no match
+    {
+      return false;
+    }
+  }
+  return true;
+}
 
 document.addEventListener("DOMContentLoaded", function(){
 
@@ -40,19 +82,14 @@ document.addEventListener("DOMContentLoaded", function(){
 
   const blanks =  document.getElementById('blanks');
   const guessList = document.getElementById('guessList');
+  const logo = document.getElementById('logo');
+  logo.setAttribute('src', word.logo);
 
-
-
-  //var word = game.getWord(); //- ReferenceError: word is not defined
-  for(i=0; i<word.length; i++){
-    var newSpan = document.createElement('span');
-    newSpan.textContent = '_';
-    blanks.appendChild(newSpan);
-
-  }
+  getBlanks();
 
   document.onkeydown = (function(event){
     var letter = event.key.toUpperCase();
+
 
     // Only alphabetical keys logged
     if(event.key == 'a' || event.key == 'b' || event.key == 'c' || event.key == 'd' || event.key == 'e'
@@ -63,30 +100,46 @@ document.addEventListener("DOMContentLoaded", function(){
       || event.key == 'z')
       {
         // Continue if attempts are greater than 0
-        if(game.attempts > 0){
+        if(game.attempts > 0 && !guessedCorrect()){
           // Check if letter is in guess list, if so do nothing.
           if(game.guessList.includes(letter)){
             gameInfo.textContent = 'You already guessed "' + letter + '"!';
           }
           // If letter is not in guess list, continue
           else{
-            // Check it letter is in word
-            if(word.includes(letter)){
-              // Get Blank class spans
-
+            // Check if letter is in word
+            if(word.name.includes(letter)){
               //place guess in guess list
               game.guessList.push(letter);
-              for(i=0; i<word.length; i++){//Check each letter of the word
+              for(i=0; i<word.name.length; i++){//Check each letter of the word
                 var fill = document.getElementById('blanks').childNodes[i];
 
-                if(letter == word[i]){//and if the guess and letter match
+                if(letter == word.name[i]){//and if the guess and letter match
                     fill.textContent = letter;        //place the guess in the span
+
                 }
+                // if(guessedCorrect()){// Check if the word is guessed correct
+                //   console.log('You won');
+                //   // gameInfo.textContent = 'You won! Press any key to start again.';
+                //   // game.wins++;
+                //   // game.gamesPlayed++;
+                //   // game.reset();
+                //   // word = game.getVideo();
+                //   // logo.setAttribute('src', word.logo);
+                //   // getBlanks();
+                // }
               }
               // Update DOM
               guessList.textContent = game.guessList.join(', ');
               gameInfo.textContent = letter + ' is in word.';
               attempts.textContent = game.attempts + ' attempts left.';
+              if(guessedCorrect()){
+                game.attempts = 0;
+                gameInfo.textContent = 'You won! Press any key to play again.';
+                game.wins++;
+                game.gamesPlayed++;
+
+              }
 
             }
             // If letter is not in word
@@ -101,9 +154,19 @@ document.addEventListener("DOMContentLoaded", function(){
           }
         }
         // If attempts are 0 or less discontinue
-        else{
+        else if(game.attempts <= 0 && !guessedCorrect()){
            gameInfo.textContent = 'You lost! Press any key to start again.';
-          // game.reset();
+           game.gamesPlayed++;
+           game.reset();
+           word = game.getVideo();
+           logo.setAttribute('src', word.logo);
+           getBlanks();
+        }
+        else if(game.attempts == 0 && guessedCorrect()){
+          game.reset();
+          word = game.getVideo();
+          logo.setAttribute('src', word.logo);
+          getBlanks();
         }
       }
   });
