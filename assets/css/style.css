@@ -1,8 +1,28 @@
 .place-holder{
-  margin: 8px;
+  margin: 9px;
 }
 
 #logo{
   width: 400px;
   height: 400px;
+}
+
+.card.col-md-3{
+  padding: 0px;
+}
+
+.card.col-md-9{
+  padding: 0px;
+}
+
+#guessList{
+  padding: 0px;
+}
+
+#blanks{
+  text-align: center;
+}
+
+#attempts{
+  text-align: center;
 }

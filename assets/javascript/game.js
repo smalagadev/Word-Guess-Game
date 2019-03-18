@@ -78,7 +78,7 @@ document.addEventListener("DOMContentLoaded", function(){
   gameInfo.textContent = 'Press any key to start.';
 
   const attempts = document.getElementById('attempts');
-  attempts.textContent = game.attempts + ' attempts left.';
+  attempts.textContent = game.attempts;
 
   const blanks =  document.getElementById('blanks');
   const guessList = document.getElementById('guessList');
@@ -116,29 +116,17 @@ document.addEventListener("DOMContentLoaded", function(){
 
                 if(letter == word.name[i]){//and if the guess and letter match
                     fill.textContent = letter;        //place the guess in the span
-
                 }
-                // if(guessedCorrect()){// Check if the word is guessed correct
-                //   console.log('You won');
-                //   // gameInfo.textContent = 'You won! Press any key to start again.';
-                //   // game.wins++;
-                //   // game.gamesPlayed++;
-                //   // game.reset();
-                //   // word = game.getVideo();
-                //   // logo.setAttribute('src', word.logo);
-                //   // getBlanks();
-                // }
               }
               // Update DOM
               guessList.textContent = game.guessList.join(', ');
               gameInfo.textContent = letter + ' is in word.';
-              attempts.textContent = game.attempts + ' attempts left.';
+              attempts.textContent = game.attempts;
               if(guessedCorrect()){
                 game.attempts = 0;
                 gameInfo.textContent = 'You won! Press any key to play again.';
                 game.wins++;
                 game.gamesPlayed++;
-
               }
 
             }
@@ -149,7 +137,7 @@ document.addEventListener("DOMContentLoaded", function(){
               // Update DOM
               guessList.textContent = game.guessList.join(', ');// update guesslist on DOM
               gameInfo.textContent = letter + ' is not in word.'; // Let user know they are wrong on DOM
-              attempts.textContent = game.attempts + ' attempts left.';// update attempts on DOM
+              attempts.textContent = game.attempts;// update attempts on DOM
             }
           }
         }
