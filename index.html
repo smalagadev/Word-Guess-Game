@@ -7,32 +7,25 @@
   </head>
   <body>
     <!-- Navigation bar as a header bar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <div class="navbar-brand" href="#">Skate Video Guessing Game</div>
+    <nav class="navbar navbar-dark bg-dark">
+      <div class="navbar-brand">Skate Video Guessing Game</div>
+      <div class="navbar-brand">Attempts: <span class="badge badge-pill badge-light" id="attempts"></span></div>
     </nav>
 
-    <!-- Display -->
-    <div class="container-fluid row">
-      <div class="card col-md-4">
-        <img src="" class="card-img-top" id="logo" alt="logo">
-        <div class="card-body">
-          <h5 class="card-title" id="game-info">Card title</h5>
+  <!-- Display -->
+    <div class="card mb-3 container-fluid">
+      <div class="row no-gutters">
+        <div class="col-md-4">
+          <img src="" class="card-img"  id="logo" alt="logo">
         </div>
-      </div>
-      <div class="col-md-8 row">
-
-        <div class="col-md-3 card">
-          <div class="card-header">Attempts</div>
-          <div class="card-body lead display-2"><span class="badge badge-pill badge-dark" id="attempts">Dark</span></div>
-        </div>
-
-        <div class="col-md-9 card">
-          <div class="card-header">Letters used:</div>
-          <div class="card-body display-4" id="guessList"></div>
-        </div>
-
-        <div class="col-md-12 card">
-          <div class="card-body" id="blanks"></div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title card-header text-center" id="game-info"></h5>
+            <div class="card-body" id="blanks"></div>
+            <hr>
+            <small class="card-header container-fluid text-center">Letters used:</small>
+            <small class="card-body" id="guessList"></small>
+          </div>
         </div>
       </div>
     </div>

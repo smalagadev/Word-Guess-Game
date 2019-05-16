@@ -1,27 +1,27 @@
-var game = {
+const game = {
   attempts: 10,
 
   videos: [
-    lakai= {name:'FULLYFLARED', logo:'assets/images/lakai.png'},
-    adidas= {name:'AWAYDAYS', logo:'assets/images/adidas.png'},
+    lakai= {name:'FULLY FLARED', logo:'assets/images/lakai.png'},
+    adidas= {name:'AWAY DAYS', logo:'assets/images/adidas.png'},
     vans= {name:'PROPELLOR', logo:'assets/images/vans.png'},
     magenta= {name:'BALADE', logo:'assets/images/magenta.jpeg'},
-    bronze= {name:'ITSTIME', logo:'assets/images/bronze.png'},
-    baker= {name:'BAKEANDDESTROY', logo:'assets/images/baker.png'},
-    deathwish= {name:'THEDEATHWISHVIDEO', logo:'assets/images/deathwish.jpg'},
-    enjoi= {name:'BAGOFSUCK', logo:'assets/images/enjoi.png'},
+    bronze= {name:'ITS TIME', logo:'assets/images/bronze.png'},
+    baker= {name:'BAKE AND DESTROY', logo:'assets/images/baker.png'},
+    deathwish= {name:'THE DEATHWISH VIDEO', logo:'assets/images/deathwish.jpg'},
+    enjoi= {name:'BAG OF SUCK', logo:'assets/images/enjoi.png'},
     palace= {name:'PALASONIC', logo:'assets/images/palace.png'},
     pyramid_country= {name:'EXETER', logo:'assets/images/pyramid-country.png'},
-    real= {name:'SINCEDAYONE', logo:'assets/images/real.png'},
-    fallen= {name:'RIDETHESKY', logo:'assets/images/fallen.png'},
-    worble= {name:'TOXICPLANET', logo:'assets/images/worble.jpeg'},
-    transworld= {name:'ANDNOW', logo:'assets/images/transworld.jpeg'},
+    real= {name:'SINCE DAY ONE', logo:'assets/images/real.png'},
+    fallen= {name:'RIDE THE SKY', logo:'assets/images/fallen.png'},
+    worble= {name:'TOXIC PLANET', logo:'assets/images/worble.jpeg'},
+    transworld= {name:'AND NOW', logo:'assets/images/transworld.jpeg'},
     welcome= {name:'FETISH', logo:'assets/images/welcome.png'},
-    wknd= {name:'SIRPALMER', logo:'assets/images/wknd.jpg'},
-    dime= {name:'DIMETURDSEASON', logo:'assets/images/dime.jpeg'},
-    emerica= {name:'STAYGOLD', logo:'assets/images/emerica.png'},
-    real= {name:'SINCEDAYONE', logo:'assets/images/real.png'},
-    zero= {name:'COLDWAR', logo:'assets/images/zero.png'}
+    wknd= {name:'SIR PALMER', logo:'assets/images/wknd.jpg'},
+    dime= {name:'DIME TURD SEASON', logo:'assets/images/dime.jpeg'},
+    emerica= {name:'STAY GOLD', logo:'assets/images/emerica.png'},
+    real= {name:'SINCE DAY ONE', logo:'assets/images/real.png'},
+    zero= {name:'COLD WAR', logo:'assets/images/zero.png'}
   ],
 
   guessList: [],
